@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}O'zbekistonga Xush Kelibsiz - VR Sayohatlar{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header class="header">
+    {% if header_settings %}
+    <img src="{{ header_settings.banner_image.url }}" alt="O'zbekiston manzarasi" class="header-image">
+    <div class="container header-content">
+      <h1>{{ header_settings.title }}</h1>
+      <p class="subtitle">{{ header_settings.subtitle }}</p>
+    </div>
+    {% else %}
+    <img src="{% static 'images/default_banner.jpg' %}" alt="O'zbekiston manzarasi" class="header-image">
+    <div class="container header-content">
+      <h1>O'ZBEKISTONGA XUSH KELIBSIZ</h1>
+      <p class="subtitle">VR sayohatlar orqali O'zbekistonning go'zal turistik joylariga virtual tashrif buyuring</p>
+    </div>
+    {% endif %}
+  </header>
+
+  <main class="container">
+      {% block content %}
+
+      {% endblock %}
+  </main>
+
+  <!-- Footer qismi -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3> O'zbekiston VR Sayohatlar </h3>
+          <p>{{ footer_settings.description|default:"Virtual reallik texnologiyalari orqali O'zbekistonning noyob diqqatga sazovor joylarini dunyoga tanitamiz." }}</p>
+          <div class="contact">
+            <span><i class="fas fa-phone"></i> {{ footer_settings.phone }}</span>
+            <span><i class="fas fa-envelope"></i> {{ footer_settings.email }}</span>
+          </div>
+        </div>
+
+        <div class="footer-section social">
+          <h3>Bizning Ijtimoiy Tarmoqlar</h3>
+          <div class="social-links">
+            <a href="{{ footer_settings.telegram_url|default:'#' }}"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="{{ footer_settings.instagram_url|default:'#' }}"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="{{ footer_settings.facebook_url|default:'#' }}"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="{{ footer_settings.youtube_url|default:'#' }}"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>{{ footer_settings.copyright_text|default:"© 2025 O'zbekiston VR Sayohatlar. Barcha huquqlar himoyalangan." }}</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

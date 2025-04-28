@@ -1,0 +1,87 @@
+/* Custom styles for Jazzmin */
+
+/* Logo size */
+.jazzmin-logo .brand-image {
+    height: 45px;
+}
+
+/* Sidebar */
+[class*="sidebar-dark-"] {
+    background-color: #1a1a2e;
+}
+
+.sidebar {
+    padding-top: 0;
+}
+
+/* Navbar */
+.main-header {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Content */
+.content-wrapper {
+    background-color: #f8f9fa;
+}
+
+/* Cards */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+/* Tables */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Form elements */
+.form-control, .select2-selection {
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+/* Image preview */
+.image-preview {
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Video preview */
+.video-preview {
+    width: 250px;
+    height: 140px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Custom colors */
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --accent: #4895ef;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #4cc9f0;
+    --danger: #f72585;
+    --warning: #f8961e;
+    --info: #560bad;
+}
+
+/* Dark mode adjustments */
+body.dark-mode {
+    background-color: #121212;
+}
+
+.dark-mode .content-wrapper {
+    background-color: #1e1e1e;
+}

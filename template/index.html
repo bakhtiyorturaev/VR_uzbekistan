@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+  <section class="cities-section">
+    <h2 class="section-title">O'zbekistonning Shaharlari</h2>
+
+    <div class="city-tabs">
+      {% for city in cities %}
+        <button class="tab-button {% if forloop.first %}active{% endif %}" data-city="{{ city.id }}">
+          {{ city.name }}
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="city-contents">
+      {% for city in cities %}
+        <div class="city-content {% if forloop.first %}active{% endif %}" id="city-{{ city.id }}">
+          <div class="city-info">
+            <h3>{{ city.name }}</h3>
+            <p>{{ city.description }}</p>
+
+            {% if city.attractions.all %}
+            <div class="attraction-slider">
+              {% for attraction in city.attractions.all %}
+                <img src="{{ attraction.image.url }}" alt="{{ attraction.name }}" class="slider-image {% if forloop.first %}active{% endif %}">
+              {% endfor %}
+              <div class="slider-caption">{{ city.attractions.first.name }}</div>
+            </div>
+
+            <div class="landmarks">
+              <h4>Asosiy diqqatga sazovor joylar:</h4>
+              <ul>
+                {% for attraction in city.attractions.all %}
+                  <li>{{ attraction.name }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if city.videos.all %}
+          <section class="vr-gallery">
+            <h2 class="section-title">{{ city.name }} VR Sayohatlar Galereyasi</h2>
+            <div class="gallery-grid">
+              {% for video in city.videos.all %}
+              <div class="gallery-item">
+                <iframe src="{{ video.embed_url }}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                <p>{{ video.title }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+
+{% endblock content %}
