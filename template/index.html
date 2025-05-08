@@ -56,11 +56,12 @@
               {% for video in city.videos.all %}
               {% if video.embed_url %}
               <div class="gallery-item">
-                  <iframe width="100%" height="200"
-                          src="{{ video.embed_url }}"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowfullscreen>
+                  <iframe
+                      width="100%" height="200"
+                      src="{{ video.embed_url }}"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen>
                   </iframe>
                   <p>{{ video.title }}</p>
               </div>

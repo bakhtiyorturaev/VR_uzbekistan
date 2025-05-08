@@ -43,19 +43,7 @@ class VRVideo(models.Model):
         return f'{self.city} - {self.title}'
 
 
-    @property
     def embed_url(self):
-        """Generate proper YouTube embed URL from various YouTube URL formats"""
-        if not self.video_url:
-            return None
-
-        # Regular expression to extract video ID from various YouTube URL formats
-        regex = r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|youtu\.be\/|youtube-nocookie\.com\/(?:embed\/|v\/)?)([^"&?\/\s]{11})'
-        match = re.search(regex, self.video_url)
-
-        if match:
-            video_id = match.group(1)
-            return f"https://www.youtube-nocookie.com/embed/{video_id}?rel=0&modestbranding=1"
-        return None
+        return f"https://www.youtube-nocookie.com/embed/{self.youtube_url}"
 
 
