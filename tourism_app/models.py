@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from urllib.parse import urlparse, parse_qs
+import re
+
 
 class City(models.Model):
     name = models.CharField(max_length=100, verbose_name=_('Shahar nomi'))
@@ -36,39 +38,24 @@ class VRVideo(models.Model):
     class Meta:
         verbose_name = _('VR Video')
         verbose_name_plural = _('VR Videolar')
-        # ordering = ['city','title']
 
     def __str__(self):
         return f'{self.city} - {self.title}'
 
+
     @property
     def embed_url(self):
-        """Improved YouTube embed URL generator that handles multiple URL formats"""
-        url = urlparse(self.video_url)
-
-        # Standard YouTube URL (https://www.youtube.com/watch?v=ID)
-        if 'youtube.com' in url.netloc:
-            video_id = parse_qs(url.query).get('v', [''])[0]
-
-        # Short YouTube URL (https://youtu.be/ID)
-        elif 'youtu.be' in url.netloc:
-            video_id = url.path[1:]
-
-        # YouTube mobile URL (https://m.youtube.com/watch?v=ID)
-        elif 'm.youtube.com' in url.netloc:
-            video_id = parse_qs(url.query).get('v', [''])[0]
-
-        # YouTube-nocookie.com URL (for privacy-enhanced mode)
-        elif 'youtube-nocookie.com' in url.netloc:
-            video_id = parse_qs(url.query).get('v', [''])[0]
-
-        else:
+        """Generate proper YouTube embed URL from various YouTube URL formats"""
+        if not self.video_url:
             return None
 
-        if not video_id:
-            return None
+        # Regular expression to extract video ID from various YouTube URL formats
+        regex = r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|youtu\.be\/|youtube-nocookie\.com\/(?:embed\/|v\/)?)([^"&?\/\s]{11})'
+        match = re.search(regex, self.video_url)
 
-        # Force HTTPS for the embed URL
-        return f"https://www.youtube-nocookie.com/embed/{video_id}?rel=0"
+        if match:
+            video_id = match.group(1)
+            return f"https://www.youtube-nocookie.com/embed/{video_id}?rel=0&modestbranding=1"
+        return None
 
 
