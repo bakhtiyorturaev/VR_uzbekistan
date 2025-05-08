@@ -7,7 +7,10 @@
   <title>{% block title %}O'zbekistonga Xush Kelibsiz - VR Sayohatlar{% endblock %}</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- CSS fayllarini chaqiramiz -->
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -19,7 +22,6 @@
       <p class="subtitle">{{ header_settings.subtitle }}</p>
     </div>
     {% else %}
-    <img src="{% static 'images/default_banner.jpg' %}" alt="O'zbekiston manzarasi" class="header-image">
     <div class="container header-content">
       <h1>O'ZBEKISTONGA XUSH KELIBSIZ</h1>
       <p class="subtitle">VR sayohatlar orqali O'zbekistonning go'zal turistik joylariga virtual tashrif buyuring</p>
@@ -29,6 +31,8 @@
 
   <main class="container">
       {% block content %}
+
+
 
       {% endblock %}
   </main>
