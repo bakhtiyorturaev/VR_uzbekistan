@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const cityContents = document.querySelectorAll('.city-content');
@@ -13,76 +12,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.classList.remove('active');
                 if (content.id === `city-${cityId}`) {
                     content.classList.add('active');
-                    initSlider(content.querySelector('.attraction-slider'));
                 }
             });
         });
     });
+});
 
 
-function setupStaticSlider(slider) {
-    if (!slider) return;
+// Diqqatga sazovor joylar uchun yangi funksiya
+    document.querySelectorAll('.attraction-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
 
-    const images = slider.querySelectorAll('.slider-image');
-    const caption = slider.querySelector('.slider-caption');
-    const landmarks = slider.nextElementSibling.querySelectorAll('li');
+            // Barcha tugmalardan active klassini olib tashlash
+            document.querySelectorAll('.attraction-btn').forEach(b => {
+                b.classList.remove('active');
+            });
 
-    landmarks.forEach((landmark, index) => {
-        landmark.style.cursor = 'pointer';
-        landmark.addEventListener('click', () => {
-            images.forEach(img => img.classList.remove('active'));
-            images[index].classList.add('active');
+            // Bosilgan tugmaga active klassini qo'shish
+            this.classList.add('active');
 
-            if (caption) {
-                caption.textContent = images[index].alt;
+            // Barcha rasmlarni yashirish
+            document.querySelectorAll('.slider-image').forEach(img => {
+                img.classList.remove('active');
+            });
+
+            // Tanlangan rasmni ko'rsatish
+            const targetImage = document.querySelector(`.slider-image[data-id="${targetId}"]`);
+            if (targetImage) {
+                targetImage.classList.add('active');
+
+                // Sarlavhani yangilash
+                const caption = targetImage.closest('.attraction-slider').querySelector('.slider-caption');
+                if (caption) {
+                    caption.textContent = this.textContent.trim();
+                }
             }
         });
     });
-}
-
-
-
-
-
-
-//    // Slayd-shou funksiyasi
-//    function initSlider(slider) {
-//        if (!slider) return;
-//
-//        const images = slider.querySelectorAll('.slider-image');
-//        const caption = slider.querySelector('.slider-caption');
-//        let currentIndex = 0;
-//
-//        const slideInterval = setInterval(() => {
-//            images[currentIndex].classList.remove('active');
-//            currentIndex = (currentIndex + 1) % images.length;
-//            images[currentIndex].classList.add('active');
-//
-//            if (caption) {
-//                caption.textContent = images[currentIndex].alt;
-//            }
-//        }, 4000);
-//
-//        slider.addEventListener('mouseenter', () => {
-//            clearInterval(slideInterval);
-//        });
-//
-//        slider.addEventListener('mouseleave', () => {
-//            clearInterval(slideInterval);
-//            slideInterval = setInterval(() => {
-//                images[currentIndex].classList.remove('active');
-//                currentIndex = (currentIndex + 1) % images.length;
-//                images[currentIndex].classList.add('active');
-//
-//                if (caption) {
-//                    caption.textContent = images[currentIndex].alt;
-//                }
-//            }, 4000);
-//        });
-//    }
-//
-//    // Boshlang'ich slayd-shoularni ishga tushirish
-//    document.querySelectorAll('.attraction-slider').forEach(slider => {
-//        initSlider(slider);
-//    });
-//});
+});

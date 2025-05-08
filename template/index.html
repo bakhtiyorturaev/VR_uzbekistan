@@ -24,7 +24,10 @@
             {% if city.attractions.all %}
             <div class="attraction-slider">
               {% for attraction in city.attractions.all %}
-                <img src="{{ attraction.image.url }}" alt="{{ attraction.name }}" class="slider-image {% if forloop.first %}active{% endif %}">
+                <img src="{{ attraction.image.url }}"
+                     alt="{{ attraction.name }}"
+                     class="slider-image {% if forloop.first %}active{% endif %}"
+                     data-id="{{ attraction.id }}">
               {% endfor %}
               <div class="slider-caption">{{ city.attractions.first.name }}</div>
             </div>
@@ -33,7 +36,11 @@
               <h4>Asosiy diqqatga sazovor joylar:</h4>
               <ul>
                 {% for attraction in city.attractions.all %}
-                  <li>{{ attraction.name }}</li>
+                  <li>
+                    <button class="attraction-btn" data-target="{{ attraction.id }}">
+                      {{ attraction.name }}
+                    </button>
+                  </li>
                 {% endfor %}
               </ul>
             </div>
