@@ -309,10 +309,9 @@ body {
 
 @media (max-width: 576px) {
    .city-info {
-    width: 100%; /* Ekran kengligini to'liq egallash */
-    border-radius: 0; /* Burchaklarni to'g'rilashtirish */
-    padding: 20px 12px; /* Yana ham ixchamroq padding */
-    box-shadow: none; /* Soyani olib tashlash */
+    width: 100%;
+    padding: 20px 12px;
+    box-shadow: none;
     border-left: none;
     border-right: none;
   }
@@ -354,8 +353,8 @@ body {
   }
 
   .city-info p {
-    font-size: 0.95rem; /* Matn shriftini biroz kichraytiramiz */
-    line-height: 1.7; /* Qator oralig'ini optimallashtiramiz */
+    font-size: 0.95rem;
+    line-height: 1.7;
     margin-bottom: 20px;
   }
 }
