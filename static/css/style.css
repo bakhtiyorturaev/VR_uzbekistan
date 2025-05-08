@@ -112,18 +112,6 @@ body {
     border-radius: 30px;
 }
 
-.tab-button {
-    padding: 12px 25px;
-    border: none;
-    background: var(--light-color);
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 30px;
-    transition: var(--transition);
-    font-weight: 600;
-    margin: 5px;
-}
-
 .tab-button:hover {
   background: #d5dbdb;
   transform: translateY(-3px);
@@ -217,12 +205,6 @@ body {
   padding-bottom: 10px;
 }
 
-.landmarks ul {
-  list-style-position: inside;
-  columns: 2;
-  column-gap: 40px;
-}
-
 .landmarks li {
   margin-bottom: 12px;
   font-size: 1.1rem;
@@ -232,28 +214,6 @@ body {
 
 .landmarks li:hover {
   color: var(--secondary-color);
-}
-.attraction-btn {
-  background: none;
-  border: none;
-  color: var(--secondary-color);
-  cursor: pointer;
-  font-size: 1.1rem;
-  padding: 5px 0;
-  text-align: left;
-  width: 100%;
-  transition: var(--transition);
-}
-
-.attraction-btn:hover {
-  color: var(--accent-color);
-}
-
-.attraction-btn.active {
-  font-weight: bold;
-  color: var(--accent-color);
-  border-left: 3px solid var(--accent-color);
-  padding-left: 10px;
 }
 
 
@@ -468,28 +428,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-/* Shahar tablari uchun qo'shimcha stillar */
-
-.tab-button:hover {
-    background: #d5dbdb;
-    transform: translateY(-3px);
-}
-
-.tab-button.active {
-    background: var(--secondary-color);
-    color: var(--text-light);
-    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
-}
-
 /* Diqqatga sazovor joylar ro'yxati */
 .landmarks ul {
     list-style: none;
@@ -497,11 +435,6 @@ body {
     column-gap: 20px;
     padding: 0;
     margin: 20px 0;
-}
-
-.landmarks li {
-    margin-bottom: 10px;
-    break-inside: avoid;
 }
 
 .attraction-btn {
@@ -533,6 +466,14 @@ body {
 }
 
 /* Slayd uchun qo'shimcha stillar */
+.attraction-slider {
+    position: relative;
+    margin: 30px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 450px;
+}
 
 .slider-image {
     width: 100%;
