@@ -19,44 +19,70 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Slayd-shou funksiyasi
-    function initSlider(slider) {
-        if (!slider) return;
 
-        const images = slider.querySelectorAll('.slider-image');
-        const caption = slider.querySelector('.slider-caption');
-        let currentIndex = 0;
+function setupStaticSlider(slider) {
+    if (!slider) return;
 
-        const slideInterval = setInterval(() => {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
+    const images = slider.querySelectorAll('.slider-image');
+    const caption = slider.querySelector('.slider-caption');
+    const landmarks = slider.nextElementSibling.querySelectorAll('li');
+
+    landmarks.forEach((landmark, index) => {
+        landmark.style.cursor = 'pointer';
+        landmark.addEventListener('click', () => {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
 
             if (caption) {
-                caption.textContent = images[currentIndex].alt;
+                caption.textContent = images[index].alt;
             }
-        }, 4000);
-
-        slider.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
         });
-
-        slider.addEventListener('mouseleave', () => {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(() => {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('active');
-
-                if (caption) {
-                    caption.textContent = images[currentIndex].alt;
-                }
-            }, 4000);
-        });
-    }
-
-    // Boshlang'ich slayd-shoularni ishga tushirish
-    document.querySelectorAll('.attraction-slider').forEach(slider => {
-        initSlider(slider);
     });
-});
+}
+
+
+
+
+
+
+//    // Slayd-shou funksiyasi
+//    function initSlider(slider) {
+//        if (!slider) return;
+//
+//        const images = slider.querySelectorAll('.slider-image');
+//        const caption = slider.querySelector('.slider-caption');
+//        let currentIndex = 0;
+//
+//        const slideInterval = setInterval(() => {
+//            images[currentIndex].classList.remove('active');
+//            currentIndex = (currentIndex + 1) % images.length;
+//            images[currentIndex].classList.add('active');
+//
+//            if (caption) {
+//                caption.textContent = images[currentIndex].alt;
+//            }
+//        }, 4000);
+//
+//        slider.addEventListener('mouseenter', () => {
+//            clearInterval(slideInterval);
+//        });
+//
+//        slider.addEventListener('mouseleave', () => {
+//            clearInterval(slideInterval);
+//            slideInterval = setInterval(() => {
+//                images[currentIndex].classList.remove('active');
+//                currentIndex = (currentIndex + 1) % images.length;
+//                images[currentIndex].classList.add('active');
+//
+//                if (caption) {
+//                    caption.textContent = images[currentIndex].alt;
+//                }
+//            }, 4000);
+//        });
+//    }
+//
+//    // Boshlang'ich slayd-shoularni ishga tushirish
+//    document.querySelectorAll('.attraction-slider').forEach(slider => {
+//        initSlider(slider);
+//    });
+//});
