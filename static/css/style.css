@@ -207,33 +207,49 @@ body {
   font-weight: 500;
 }
 
-/* Diqqatga sazovor joylar */
-.landmarks h4 {
-  margin: 35px 0 20px;
-  font-size: 1.5rem;
-  color: var(--secondary-color);
-  font-family: 'Playfair Display', serif;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-}
-
+/* Diqqatga sazovor joylar tugmalari */
 .landmarks ul {
-  list-style-position: inside;
+  list-style: none;
   columns: 2;
-  column-gap: 40px;
+  column-gap: 20px;
+  padding: 0;
 }
 
 .landmarks li {
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  transition: var(--transition);
-  padding: 5px 0;
+  margin-bottom: 10px;
 }
 
-.landmarks li:hover {
-  color: var(--secondary-color);
-  transform: translateX(5px);
+.attraction-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #e1f5fe;
+  border: 2px solid #4fc3f7;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-align: left;
+  transition: var(--transition);
+  color: #0277bd;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.attraction-btn:hover {
+  background-color: #b3e5fc;
+  color: #01579b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-color: #29b6f6;
+}
+
+.attraction-btn.active {
+  background-color: #4fc3f7;
+  color: white;
+  border-color: #0288d1;
+  font-weight: 600;
+}
+
 
 /* VR galereya */
 .vr-gallery {
